@@ -1,8 +1,9 @@
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
 
 ### AIM
-To interface an Analog output (servo motor) and modify the angular displacement of the servo using PWM signal .
-COMPONENTS REQUIRED:
+To interface an Analog output (servo motor) and modify the angular displacement of the servo using PWM signal . 
+
+### COMPONENTS REQUIRED:
 1.	Servo motor of choice (9v is preferred )
 2.	1 KΩ resistor 
 3.	Arduino Uno 
@@ -67,6 +68,46 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
+``` 
+// C++ code
+
+#include <Servo.h>
+int pos = 0;
+Servo servo_9;
+
+void setup()
+{
+ Serial.begin(9600);
+ servo_9.attach(9, 500, 2500);//
+}
+
+void loop()
+{
+ for (pos = 0; pos <= 180; pos += 1) 
+ {
+   servo_9.write(pos);
+   delay(15);
+ 	Serial.print("Angle of Server: ");
+ 	Serial.println(pos);
+ }
+ for (pos = 180; pos >= 0; pos -= 1) 
+ {
+   servo_9.write(pos);
+   delay(15);
+ 	Serial.print("Angle of Server: ");
+ 	Serial.println(pos);
+ }
+} 
+``` 
+
+### OUTPUT: 
+![image](https://user-images.githubusercontent.com/103016346/194590150-dc9d176c-ae39-4e8c-b738-a07fc1dc9a44.png)
+  
+ ![image](https://user-images.githubusercontent.com/103016346/194590320-ac4d32c7-34ff-4079-b932-7f0802ccb7a9.png)
+
+![image](https://user-images.githubusercontent.com/103016346/194590589-c53fec62-bb07-4f42-8eb7-cd52138687a9.png)
+
+
  
 
 
